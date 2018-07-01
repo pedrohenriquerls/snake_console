@@ -30,15 +30,21 @@ end
 
 @snake = Snake.new
 
-loop do
-  clear_screen
+Thread.new do
+  loop do
+    clear_screen
 
-  # execute the game logic
-  @snake.update
+    # execute the game logic
+    @snake.update
 
-  #Render the view
-  $stdout.printf("\r%s", $screen)
+    #Render the view
+    $stdout.printf("\r%s", $screen)
 
-  sleep 0.1
+    sleep 0.1
+  end
 end
 
+loop do
+  # Catch the user input
+  @snake.change_direction $stdin.getch
+end
