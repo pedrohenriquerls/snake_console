@@ -24,7 +24,7 @@ end
 
 def clear_screen
   $stdout.write(%x{clear})
-  $stdout.rewind
+  # $stdout.rewind
   $screen = $empty_screen.dup
 end
 
