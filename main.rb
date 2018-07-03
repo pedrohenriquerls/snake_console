@@ -3,6 +3,7 @@ require 'io/console'
 
 require_relative 'screen_char'
 require_relative 'snake'
+require_relative 'food'
 
 HEIGHT, WIDTH = $stdout.winsize
 
@@ -29,6 +30,7 @@ def clear_screen
 end
 
 @snake = Snake.new
+@food = Food.new
 
 Thread.new do
   loop do
@@ -36,6 +38,7 @@ Thread.new do
 
     # execute the game logic
     @snake.update
+    @food.update
 
     #Render the view
     $stdout.printf("\r%s", $screen)
