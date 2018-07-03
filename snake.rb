@@ -17,6 +17,14 @@ class Snake
     movement
   end
 
+  def eat?(food)
+    snake_head = body.last
+    if snake_head.x == food.x && snake_head.y == food.y
+      body.insert(0, body.first.clone)
+      true
+    end
+  end
+
   def change_direction(user_input)
     case user_input
     when "A"
@@ -56,8 +64,10 @@ class Snake
   end
 
   def default_body_position
+    center_x = WIDTH / 2
+    center_y = HEIGHT / 2
     0.upto(5).each_with_object([]) do |x, default_body|
-      default_body << ScreenChar.new(x, 0)
+      default_body << ScreenChar.new(center_x + x, center_y)
     end
   end
 end

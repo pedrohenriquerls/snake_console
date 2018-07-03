@@ -1,4 +1,3 @@
-require 'byebug'
 require 'io/console'
 
 require_relative 'screen_char'
@@ -39,6 +38,7 @@ Thread.new do
     # execute the game logic
     @snake.update
     @food.update
+    @food.respawn if @snake.eat? @food
 
     #Render the view
     $stdout.printf("\r%s", $screen)
