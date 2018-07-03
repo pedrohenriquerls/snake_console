@@ -28,13 +28,13 @@ class Snake
   def change_direction(user_input)
     case user_input
     when "A"
-      @direction = UP
+      @direction = UP unless direction == BOTTOM
     when "B"
-      @direction = BOTTOM
+      @direction = BOTTOM unless direction == UP
     when "C"
-      @direction = RIGHT
+      @direction = RIGHT unless direction == LEFT
     when "D"
-      @direction = LEFT
+      @direction = LEFT unless direction == RIGHT
     end
   end
 
